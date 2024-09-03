@@ -1,0 +1,156 @@
+//UNIT
+// (mendapatkan daftar unit)
+GET http://localhost:5000/units
+
+###
+// (mendapatkan unit berdasarkan id)
+GET http://localhost:5000/units/3
+
+###
+// (membuat unit baru)
+POST http://localhost:5000/units
+Content-Type: application/json
+
+{
+	"nameUnit": ""
+}
+
+###
+// (memperbarui data unit)
+PATCH  http://localhost:5000/units/2
+Content-Type: application/json
+
+{
+	"nameUnit": ""
+}
+
+###
+// (menghapus unit)
+DELETE  http://localhost:5000/units/1
+
+###
+// (membuat banyak unit baru sekaligus)
+POST http://localhost:5000/units/bulk
+Content-Type: application/json
+
+{
+  "units": [
+    { "nameUnit": "" },
+    { "nameUnit": "" }
+  ]
+}
+
+###################################################################
+
+
+//USER
+###
+//mendapatkan daftar pengguna
+GET http://localhost:5000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJuYW1lIjoiUm9zbGluIiwiZW1haWwiOiJyb3NsaW5AZ21haWwuY29tIiwicm9sZSI6InN1cGVyYWRtaW4iLCJ1bml0SWQiOm51bGwsImlhdCI6MTcyMTU3NDM1NiwiZXhwIjoxNzIxNjYwNzU2fQ.0yQLWg7wFnLOmzHcUbrup91ZVpmVrfxilyzM-p0cp-U
+
+###
+//mendapatkan pengguna berdasarkan id
+GET http://localhost:5000/users/11
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJuYW1lIjoiUm9zbGluIiwiZW1haWwiOiJyb3NsaW5AZ21haWwuY29tIiwicm9sZSI6InN1cGVyYWRtaW4iLCJ1bml0SWQiOm51bGwsImlhdCI6MTcyMTU3NDM4NSwiZXhwIjoxNzIxNjYwNzg1fQ.NbD2qFEpL-BIIZV0YYFIquJRTknguyAPwayQg3Pj6W4
+
+###
+//membuat pengguna superadmin baru 
+POST http://localhost:5000/users
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+	"name": "",
+	"email": "",
+	"password": "",
+	"role": "superadmin"
+}
+
+###
+//membuat pengguna operator baru 
+POST http://localhost:5000/users
+Authorization: Bearer 
+
+{
+	"name": "lah",
+	"email": "lah@gmail.com",
+	"password": "lah123",
+	"unit": "Safety Risk & Quality Control"
+}
+
+###
+//membuat pengguna karyawan baru 
+POST http://localhost:5000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJuYW1lIjoicHV0IiwiZW1haWwiOiJwdXRAZ21haWwuY29tIiwicm9sZSI6Im9wZXJhdG9yIiwidW5pdElkIjozLCJpYXQiOjE3MjE1NzY3NjYsImV4cCI6MTcyMTY2MzE2Nn0.oGwdFcD7SwYonzjWbFwUN3Ecqm8YY4cuqJwyKvLxT4E
+Content-Type: application/json
+
+{
+	"name": "lin",
+	"email": "lin@gmail.com",
+	"password": "lin123"
+}
+
+###
+// (memperbarui data pengguna)
+PATCH  http://localhost:5000/users/2
+# Authorization: Bearer 
+Content-Type: application/json
+
+{
+	"name": "",
+	"email": "",
+	"unit": "",
+	"status": ""
+}
+
+###
+// (menghapus pengguna)
+DELETE  http://localhost:5000/users/1
+# Authorization: Bearer 
+
+#####################################################################
+
+//AUTH
+###
+//login superadmin
+POST http://localhost:5000/login
+Content-Type:  application/json
+
+{
+	"email": "roslin@gmail.com",
+	"password": "roslin123"
+}
+
+###
+//login operator
+POST http://localhost:5000/login
+Content-Type:  application/json
+
+{
+	"email": "put@gmail.com",
+	"password": "put123"
+}
+
+###
+//login karyawan
+POST http://localhost:5000/login
+Content-Type:  application/json
+
+{
+	"email": "",
+	"password": ""
+}
+
+###
+//refreshtoken
+GET http://localhost:5000/token
+
+###
+//me
+GET http://localhost:5000/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJuYW1lIjoicHV0IiwiZW1haWwiOiJwdXRAZ21haWwuY29tIiwicm9sZSI6Im9wZXJhdG9yIiwidW5pdElkIjozLCJpYXQiOjE3MjE1NzE1ODcsImV4cCI6MTcyMTY1Nzk4N30.csouEHeOW4c3PbB8LHRh3zCDm-TcmifDnCPNAMtJhVI
+
+###
+//logout
+DELETE http://localhost:5000/logout
